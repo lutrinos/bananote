@@ -34,6 +34,7 @@ Bananote supports some optional arguments for the `note` function:
 
 - `date`: By default, Bananote prints the compilation date in the top right of the header. You can change the date that should be printed here (as a Typst [datetime](https://typst.app/docs/reference/foundations/datetime/) object), or pass `none` to suppress the date.
 - `version`: This will be printed below the date as "Version #version".
+- `banana-color`: Changes the color in which the section numbers are highlighted (default: yellow). 
 - `highlight-by`: Bananote will typeset citations of the authors' own papers in green, rather than blue. More specifically, pass either a string or an array of strings in this argument. Papers will be cited in green if the last name of one of the authors matches one of the strings given to `highlight-by`. By default, no authors will be highlighted.
 
 Bananote comes with a nice configuration of [Pergamon](https://typst.app/universe/package/pergamon). If you import Pergamon, you can use Pergamon's usual citation commands. You can print the bibliography using `print-bananote-bibliography()`.
@@ -53,7 +54,10 @@ New Computer Modern Sans is automatically available in the Typst web app. If you
 
 ## Changelog
 
-Version 0.1.2 (2026-01-23):
+Version 0.1.2 (2026-01-22):
 - Bumped Pergamon version to 0.7.1.
+- Mild defaults for table formatting and figure placement.
+
+Version 0.1.1
 - Made color splashes configurable.
 

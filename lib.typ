@@ -111,6 +111,11 @@
   show heading.where(level: 3): set text(font: sans, weight: sans-weight)
   show heading.where(level: 4): it => text(font: sans, weight: sans-weight, size: text-size)[*#it.body.*]
 
+  // DEFAULT FORMATS FOR TABLES AND FIGURES
+  show table.cell.where(y: 0): set text(weight: "bold")
+  set table(align: left, stroke: none, column-gutter: 1em)
+  set figure(placement: top)
+
 
   // PERGAMON
   let maybe-highlight(reference) = {
