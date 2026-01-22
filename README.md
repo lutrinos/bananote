@@ -12,7 +12,7 @@ The style has splashes of yellow, inspired by the [Dagstuhl LIPIcs style](https:
 Import bananote and populate the header with the title and authors, as follows.
 
 ```
-#import "@preview/bananote:0.1.1": *
+#import "@preview/bananote:0.1.2": *
 
 #show: note.with(
   title: [My Research Note],
@@ -49,3 +49,11 @@ New Computer Modern Sans is automatically available in the Typst web app. If you
 ## Example
 
 <img src="https://github.com/coli-saar/bananote/blob/main/template/thumbnail.png" width=500px border=1px />
+
+
+## Changelog
+
+Version 0.1.2 (2026-01-23):
+- Bumped Pergamon version to 0.7.1.
+- Made color splashes configurable.
+

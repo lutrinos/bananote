@@ -1,6 +1,6 @@
 
-#import "@preview/bananote:0.1.1": *
-#import "@preview/pergamon:0.6.0": *
+#import "@preview/bananote:0.1.2": *
+#import "@preview/pergamon:0.7.1": *
 
 
 #show: note.with(

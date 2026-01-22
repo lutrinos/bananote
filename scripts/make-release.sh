@@ -6,6 +6,9 @@
 #
 # The resulting release package will be in release/preview/<PACKAGE>/<VERSION>.
 
+# For local testing, just run ./scripts/make-release.sh VERSION
+# To prepare a public release, run ./scripts/make-release.sh VERSION --update-readme
+
 
 VERSION=$1
 
@@ -16,6 +19,17 @@ then
 fi
 
 RELEASE_DIR=release/preview/bananote/$VERSION
+
+
+if [[ "$2" == "--update-readme" ]]; then
+    # Update occurrences of version in the README, but only if requested
+    echo "Updating README to version $VERSION."
+    sed -i '.bak' -e "s/preview\/bananote:[^\"]*/preview\/bananote:$VERSION/" README.md
+
+    # Update version in blank.typ
+    echo "Updating blank.typ to version $VERSION."
+    sed -i '.bak' -e "s/preview\/bananote:[^\"]*/preview\/bananote:$VERSION/" template/blank.typ
+fi
 
 # Put together release
 rm -rf $RELEASE_DIR
