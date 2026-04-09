@@ -1,5 +1,6 @@
 #import "@preview/pergamon:0.7.1": *
-#import "lib.typ": *
+#import "@preview/bananote:0.1.2": *
+// #import "lib.typ": *
 
 #show: note.with(
   title: [My Research Note],
