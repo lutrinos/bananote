@@ -3,6 +3,7 @@
 // It is modeled roughly after the Dagstuhl LIPIcs style, https://submission.dagstuhl.de/documentation/authors
 
 #import "@preview/pergamon:0.7.1": *
+#import "@preview/showybox:2.0.4": showybox
 
 #let sans = ("New Computer Modern Sans", "Libertinus Serif")
 #let sans-weight = 800
@@ -43,6 +44,7 @@
   version: none,
   highlight-by: (),
   banana-color: yellow,
+  equation-numbering: none,
   doc
 ) = {
   set text(font: serif, size: text-size)
@@ -112,10 +114,15 @@
   show heading.where(level: 4): it => text(font: sans, weight: sans-weight, size: text-size)[*#it.body.*]
 
   // DEFAULT FORMATS FOR TABLES AND FIGURES
+  show table.cell.where(y: 0): set block(fill: banana-color)
   show table.cell.where(y: 0): set text(weight: "bold")
-  set table(align: left, stroke: none, column-gutter: 1em)
+  set table(stroke: 0.5pt + banana-color)
+
   set figure(placement: top)
 
+  // SOME STYLES
+  show regex("=([^=]+)="): it => highlight(it.text.slice(1, -1), fill: banana-color.lighten(70%), extent: 2pt) 
+  set math.equation(numbering: equation-numbering)
 
   // PERGAMON
   let maybe-highlight(reference) = {
@@ -138,21 +145,57 @@
   refsection(format-citation: fcite.format-citation, doc)
 }
 
-#let abstract(abstr) = {
+#let abstract(title: "Abstract", body) = {
   v(2em)
   block[
     #line(length: 100%)
     #place(dx: 2em, dy: -1em, box(
       fill: white,
       inset: 6pt,
-      text(font: sans, weight: sans-weight)[Abstract]
+      text(font: sans, weight: sans-weight)[#title]
     ))
   ]
   v(-0.2em)
 
-  abstr
+  body
 
   v(-0.1em)
   line(length: 100%)
   v(0.5em)
+}
+
+#let box(
+  title: none,
+  footer: "",
+  color: yellow,
+  radius: 2pt,
+  stroke: 1pt,
+  inset: 8pt,
+  width: auto,
+  body,
+) = {
+  showybox(
+    title-style: (
+      boxed-style: (
+        anchor: (x: left, y: horizon),
+        radius: 0pt
+      ),
+      color: black
+    ),
+    frame: (
+        title-color: color,
+        body-color: color.lighten(90%),
+        footer-color: color.lighten(90%),
+        border-color: color.darken(00%),
+        radius: 0pt,
+        thickness: stroke
+      ),
+    breakable: true,
+    width: width,
+    align: center,
+    title: title,
+    footer: footer
+  )[
+    #body
+  ]
 }

@@ -1,6 +1,6 @@
 #import "@preview/pergamon:0.7.1": *
-#import "@preview/bananote:0.1.2": *
-// #import "lib.typ": *
+//#import "@preview/bananote:0.1.2": *
+#import "lib.typ": *
 
 #show: note.with(
   title: [My Research Note],
@@ -9,13 +9,15 @@
   ),
   highlight-by: "Koller",
   version: [1],
+  equation-numbering: "(1)"
 )
 
-#abstract[
+#abstract(title: "Abstract / Résumé")[
   #lorem(50)
 ]
 
-
+#outline(depth: 1);
+#pagebreak()
 
 = Introduction
 
@@ -35,12 +37,29 @@ cal(L)(theta) = sum_(u in cal(U)) sum_(g=1)^K (
 ) 
 $ <eq:5>
 
+Here is some =highlighted text= !
+
 #lorem(20)
 
-Here's an example citation: #citet("ehop-2025").
+Here's an example citation: #citet("ehop2025").
 
 Here's a reference to another section: @sec:2.
 
+Here's a reference to a formula @eq:5.
+
+#box(title: "Newton's second law")[
+  If a body of mass $m$ experiments an acceleration $bold(a)$ due to a net force $sum bold(F)$, this acceleration is related to the mass and force by the following equation:
+
+    $ bold(a) = frac(sum bold(F), m) $
+]
+
+#table(
+  columns: (1fr, 1fr, 1fr),
+  [*Nom*], [*Langage*], [*Année*],
+  [Typst], [Typst], [2019],
+  [Rust], [Rust], [2010],
+  [Python], [Python], [1991],
+)
 
 === A subsubsection
 
